@@ -1,3 +1,11 @@
+# Knapsack-problem with certain knapsack size C
+
+'''Problem Description:
+500 Knapsack Instances
+C=100
+Choose which items to put in the knapsack 
+If you go over C, then you get nothing for that instance'''
+
 #Part 1: Get the information
 
 #Read the file
