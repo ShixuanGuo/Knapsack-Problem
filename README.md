@@ -15,6 +15,9 @@ Several algorithms for solving 1/0 knapsack problem / combinatorial optimization
     Given a mix of the size, choose the size with items put in the knapsack  
     
 4)	**Files**  
-    •	Test_example  
+    •	Test_example
+        weight of item; value of item
     •	Solution  
-    •	Report  
+    •	Report 
+        weight of item; value of item
+        sequence of 0/1: : if the i-th element of sequence equal to 1 then we take the i-th item to knapsack overwise we don't take the item to knapsack
