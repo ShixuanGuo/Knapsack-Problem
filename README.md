@@ -6,7 +6,6 @@ Several algorithms for solving 1/0 knapsack problem / combinatorial optimization
     Determine which items to be included in a collection so that the total weight is no more than a limited knapsack size and        the total value is as large as possible  
 
 2)	**Implemented algorithms**  
-    •	cost/weight ratio  
     •	dynamic programming  
     •	Monte Carlo simulation  
     
