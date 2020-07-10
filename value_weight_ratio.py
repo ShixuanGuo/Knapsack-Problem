@@ -5,9 +5,20 @@ Choose items from the highest ratio to the lowest ratio until total weight reach
 
 
 def value_weight_ratio(capacity, treasures):
-    """capacity: the capacity of knapsack
-    treasures: lists of tuples like (weight,value)
-    return: tuple like: (best cost, best selection of items: list of 1 and 0)
+    """
+    Get the best subset of items satisfied capcaity limitation and its' total weight
+    
+    Parameters
+    ---------
+    capacity: int
+        the capacity of knapsack
+    treasures: list
+        list of tuples like (weight,value)
+    
+    Return
+    ------
+    tuple
+        a tuple like (best cost, best selection of items: list of 1 and 0)
     """
     ratios = [(index, item[1] / float(item[0])) for index, item1 in enumerate(treasures)]
     ratios = sorted(ratios, key=lambda x: x[1], reverse=True)
