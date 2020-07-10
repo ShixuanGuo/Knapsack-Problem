@@ -10,18 +10,37 @@ Several algorithms for solving 1/0 knapsack problem / combinatorial optimization
     •	Given a mix of the capacity Ci, choose the optimal capacity along with items put in the knapsack  
 
 2.	**Approaches**  
-There are three approaches in this problem:  
+First, read the treasure information `treasures=read_treasure(file_name)` and saperate treasures' weights and values `weights,values=get_treasure(treasures)`  
+Second, there are three approaches to select treasures in this problem:  
     •	Value/weight ratio  
     •	Dynamic programming  
     •	Monte Carlo simulation  
     1) **Value/weight ratio**: Calculate the value/weight ratio for each item and sort them from the highest ratio to the lowest ratio. Choose items according to the order unitl the total weight is more than limited capacity.  
-    2) **Dynamic programming**: Consider all the possible weights from 1 to C as ci and all items weights as wj. If wj<ci, we have two possible actions: a) fill wj in the given ci and total value of ci will be vj+total value of (ci-wj), b) do not fill wj in the given ci and total value of ci = total value of ci-1. We take the maximum of these two possible action.   
-    3) **Monte Carlo simulation**: This approach is to choose the optimal capacity among the mix of Ci. First, randomly assign a capacity for each knapsack following the given distribution. Second, get the best selection of each knapsack using value/weight ratio or dynamic programming approach and record the total value of each knapsack. Repeat the above simulation process for N times and select the capacity as optimal capacity giving the max total value.   
-    
+    ```python
+    best_cost, best_subset=value_weight_ratio(capacity,treasures)
+    ```  
+    2) **Dynamic programming**: Consider all the possible weights from 1 to C as ci and all items weights as wj. If wj<ci, we have two possible actions: a) fill wj in the given ci and total value of ci will be vj+total value of (ci-wj), b) do not fill wj in the given ci and total value of ci = total value of ci-1. We take the maximum of these two possible action.  
+    ```python
+    n=len(weights) # for multiple knapsacks, n is the total number of items would be selected in one knapsack
+    best_value=bag(weights,values,capacity,n)
+    subset=best_subset(weights,best_value,capacity,n)
+    ```  
+    3) **Monte Carlo simulation**: This approach is to choose the optimal capacity among the mix of Ci. First, randomly assign a capacity for each knapsack following the given distribution. Second, get the best selection of each knapsack using value/weight ratio or dynamic programming approach and record the total value of each knapsack. Repeat the above simulation process for N times and select the capacity as optimal capacity giving the max total value.  
+    ```python
+    opt_c=mento_calor_opt(treasures[0:500], 50)
+    result = final_subsets(treasures[0:500],opt_c)
+    ```  
+Third, output our best subsets as a file using `write_opt("Knapsack_solution_report.csv",N,n)`.  
 3.	**Files**  
-    •	Test_example
-        weight of item; value of item  
-    •	Solution    
-    •	Report 
-        weight of item; value of item  
+    •	Test:
+        A. Test_example
+            weight of item; value of item  
+        B. Report  
+            weight of item; value of item  
         sequence of 0/1: if the i-th element of sequence equal to 1 then we take the i-th item to knapsack overwise we don't take the item to knapsack
+    •	Code(Solutions)     
+        A. Value_weight_raito  
+        B. Dynamic programming  
+        C. Monte Carlo simulation  
+        D. Generate_report  
+        E. Main (example using Dynamic programming and Monte Carlo)  
