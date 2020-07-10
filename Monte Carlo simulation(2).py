@@ -14,7 +14,20 @@ def mento_calor_opt(treasures, N):
     '''trail: f(C)
     for each set, randomly assign a C follow the uniform distribution: U(100,150), 
     record total value of all sets and repeat the simulation for N times
-    find the optimal C for each set giving the max total value among N total value'''
+    find the optimal C for each set giving the max total value among N total value
+    
+    Parameters
+    ---------
+    treasures: list
+        combination list of treasures' weights and values
+    N: int
+        the number of simulations
+    
+    Return
+    ------
+    opt_c: float
+        the best capcaity assigned to knapsacks
+    '''
     opt_c=100
     max_value=0
     for C2 in range(100,151):
@@ -36,3 +49,31 @@ def mento_calor_opt(treasures, N):
             max_value=expect_best_value
             opt_c=C2
     return opt_c
+
+# Combine Dynamic Programming with Monte Carlo 
+def final_subsets(treasures, opt_c):
+    '''Use Monte Carlo simulation get opt_c and find the best subsets using opt_c
+    
+    Parameters
+    ---------
+    treasures: list
+        combination list of treasures' weights and values
+    opt_c: float
+        the best capcaity assigned to knapsacks
+    
+    Return
+    ------
+    total_subset: list
+        a list of best subsets for all knapsacks
+    '''
+    result=[]
+    total_subset = []
+    for treasure in treasures:
+        weights,values=get_treasure(treasure)
+        n=len(weights)
+        best_value=bag(weights,values,opt_c,n)
+        subset=best_subset(weights,best_value,opt_c,n)
+        result+=[best_value, subset]
+        total_subset += [subset]
+    
+    return total_subset
