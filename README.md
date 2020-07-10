@@ -1,20 +1,20 @@
 # Knapsack-Problem
 Several algorithms for solving 1/0 knapsack problem / combinatorial optimization in Python
 
-1.	**Introduction**  
-    1) **Problem Description**  
-    Given a set of items, each with a weight and a value  
-    Determine which items to be included in a collection so that the total weight is no more than a limited knapsack capacity and the total value is as large as possible  
-    2) **Goals**  
-    •	Given a certain knapsack capacity C, choose which items to put in the knapsack  
-    •	Given a mix of the capacity Ci, choose the optimal capacity along with items put in the knapsack  
+## Part 1 Introduction  
+1) **Problem Description**  
+Given a set of items, each with a weight and a value  
+Determine which items to be included in a collection so that the total weight is no more than a limited knapsack capacity and the total value is as large as possible  
+2) **Goals**  
+•	Given a certain knapsack capacity C, choose which items to put in the knapsack  
+•	Given a mix of the capacity Ci, choose the optimal capacity along with items put in the knapsack  
 
-2.	**Approaches**  
-First, read the treasure information `treasures=read_treasure(file_name)` and saperate treasures' weights and values `weights,values=get_treasure(treasures)`  
-Second, there are three approaches to select treasures in this problem:  
-    •	Value/weight ratio  
-    •	Dynamic programming  
-    •	Monte Carlo simulation  
+## Part 2 Approaches  
+1. Read the treasure information `treasures=read_treasure(file_name)` and saperate treasures' weights and values `weights,values=get_treasure(treasures)`  
+2. There are three approaches to select treasures in this problem:  
+•	Value/weight ratio  
+•	Dynamic programming  
+•	Monte Carlo simulation  
     1) **Value/weight ratio**: Calculate the value/weight ratio for each item and sort them from the highest ratio to the lowest ratio. Choose items according to the order unitl the total weight is more than limited capacity.  
     ```python
     best_cost, best_subset=value_weight_ratio(capacity,treasures)
@@ -30,17 +30,17 @@ Second, there are three approaches to select treasures in this problem:
     opt_c=mento_calor_opt(treasures[0:500], 50)
     result = final_subsets(treasures[0:500],opt_c)
     ```  
-Third, output our best subsets as a file using `write_opt("Knapsack_solution_report.csv",N,n)`.  
-3.	**Files**  
-    •	Test:
-        A. Test_example
-            weight of item; value of item  
-        B. Report  
-            weight of item; value of item  
-        sequence of 0/1: if the i-th element of sequence equal to 1 then we take the i-th item to knapsack overwise we don't take the item to knapsack
-    •	Code(Solutions)     
-        A. Value_weight_raito  
-        B. Dynamic programming  
-        C. Monte Carlo simulation  
-        D. Generate_report  
-        E. Main (example using Dynamic programming and Monte Carlo)  
+3. Output our best subsets as a file using `write_opt("Knapsack_solution_report.csv",N,n)`.  
+## Part 3 Files  
+1) Test  
+    * Test_example
+        weight of item; value of item  
+    * Report  
+        weight of item; value of item  
+    sequence of 0/1: if the i-th element of sequence equal to 1 then we take the i-th item to knapsack overwise we don't take the item to knapsack
+2) Code(Solutions)      
+    * Value_weight_raito  
+    * Dynamic programming  
+    * Monte Carlo simulation  
+    * Generate_report  
+    * Main (example using Dynamic programming and Monte Carlo)  
