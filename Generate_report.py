@@ -1,21 +1,55 @@
-#Part 4: Combine Dynamic Programming with Monte Carlo and generate report
+#Part 1: Get the information
 
-def final_subsets(treasures, opt_c):
-    '''Use Monte Carlo simulation get opt_c and find the best subsets using opt_c'''
-    result=[]
-    total_subset = []
-    for treasure in treasures:
-        weights,values=get_treasure(treasure)
-        n=len(weights)
-        best_value=bag(weights,values,opt_c,n)
-        subset=best_subset(weights,best_value,opt_c,n)
-        result+=[best_value, subset]
-        total_subset += [subset]
+#Read the file
+def read_treasure(file_name):
+    '''The input file has format like: nth row:weights, (n+1)th row:values, n=0,...max_row
     
-    return total_subset
+    file_name: str
+        name of input file
+    '''
+    f=open(file_name, 'r')
+    lines=f.readlines()
+    treasures=[[lines[i].strip('\n'),lines[i+1].strip('\n')] \
+              for i in range(0,1500,3)]
+    return treasures
+
+#Get the weights and values of all items
+def get_treasure(treasure):
+    '''Separate items' weights and values
+    
+    Parameters
+    ---------
+    treasure: list
+    
+    Return
+    ------
+    weights: list
+        list of items' weights
+    values: list
+        list of items' values
+    '''
+    weights=treasure[0].split(',')
+    values=treasure[1].split(',')
+    for i in range(len(weights)):
+        weights[i]=int(weights[i]) 
+        values[i]=float(values[i]) 
+    return weights, values
+
+
+#Part 4: Generate report
     
 def write_opt(filename,N,n):
-    '''write the combination into the cvs file'''
+    '''write the combination into the cvs file
+    
+    Parameters
+    ----------
+    file_name: str
+        name of input file
+    N: int
+        the number of simulations
+    n: int
+        the number of items waiting to be selected in one knapsack
+    '''
     first_line = open('Knapsack_Instances.csv','r') .readlines()[::3]
     first_list = []
     for a in first_line:
@@ -48,7 +82,7 @@ def write_opt(filename,N,n):
     wr.close()
     return filename
 
-
+# Example
 treasures=read_treasure('Knapsack_Instances.csv')
 opt_c=mento_calor_opt(treasures[0:500], 50)
 result01 = final_subsets(treasures[0:500],opt_c)
