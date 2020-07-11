@@ -31,7 +31,7 @@ Determine which items to be included in a collection so that the total weight is
     result = final_subsets(treasures[0:500],opt_c)
     ```  
 3. Output our best subsets as a file using `write_opt("Knapsack_solution_report.csv",N,n)`.  
-Have a quick look at the first 3 knapsacks.  
+Have a quick look at a part of the first 3 knapsacks.  
 ![Part of solution](https://github.com/ShixuanGuo/Knapsack-Problem/blob/master/Part%20of%20solution.png)  
 ## Part 3 Files  
 1) Test  
